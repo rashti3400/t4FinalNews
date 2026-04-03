@@ -95,7 +95,6 @@ select {
     50% { transform: translate(24px, -22px) scale(1.05); }
 }
 
-/* shared */
 .btn {
     border: 1px solid var(--line);
     background: rgba(255,255,255,0.04);
@@ -134,7 +133,6 @@ select {
     font-weight: 900;
 }
 
-/* forms */
 .fg {
     display: flex;
     flex-direction: column;
@@ -173,7 +171,7 @@ select {
     resize: vertical;
 }
 
-/* landing */
+/* Landing */
 .landing-page {
     position: relative;
     z-index: 1;
@@ -380,7 +378,7 @@ select {
     color: #fff;
 }
 
-/* main app */
+/* Main app */
 #mainApp {
     position: relative;
     z-index: 1;
@@ -515,7 +513,7 @@ header {
     font-size: .85rem;
 }
 
-/* ticker */
+/* Ticker */
 .ticker-bar {
     max-width: 1320px;
     margin: 14px auto 0;
@@ -551,7 +549,7 @@ header {
     100% { transform: translateX(-100%); }
 }
 
-/* hero */
+/* Hero */
 .hero-strip {
     max-width: 1320px;
     margin: 16px auto 0;
@@ -610,7 +608,7 @@ header {
     color: var(--muted);
 }
 
-/* main */
+/* Main */
 main {
     max-width: 1320px;
     margin: 0 auto;
@@ -671,7 +669,7 @@ main {
     border-color: transparent;
 }
 
-/* info section */
+/* Info section */
 .app-info-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -695,25 +693,13 @@ main {
     font-weight: 900;
 }
 
-.info-box-left {
-    order: 1;
-}
-
-.info-box-center {
-    order: 2;
-}
-
-.info-box-right {
-    order: 3;
-}
-
 .policy-short-text {
     color: var(--muted);
     line-height: 1.7;
     margin-bottom: 12px;
 }
 
-/* cards */
+/* News cards */
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -847,7 +833,7 @@ main {
     color: #fff;
 }
 
-/* comments */
+/* Comments */
 .comments-section {
     padding: 0 18px 18px;
 }
@@ -975,7 +961,7 @@ main {
     font-weight: 900;
 }
 
-/* states */
+/* States */
 .status-msg {
     grid-column: 1 / -1;
     text-align: center;
@@ -1029,7 +1015,7 @@ main {
     100% { background-position: -200% 0; }
 }
 
-/* alerts */
+/* Alert */
 .alert-banner {
     display: none;
     position: fixed;
@@ -1109,7 +1095,7 @@ main {
     to { width: 0%; }
 }
 
-/* modal */
+/* Modals */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1128,7 +1114,7 @@ main {
 
 .modal {
     width: 100%;
-    max-width: 580px;
+    max-width: 680px;
     background: linear-gradient(180deg, rgba(18,34,53,.98), rgba(12,24,38,.98));
     border: 1px solid var(--line);
     border-radius: 24px;
@@ -1274,7 +1260,7 @@ main {
     display: block;
 }
 
-/* policy modal */
+/* Policy */
 .policy-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -1331,7 +1317,7 @@ main {
     text-align: center;
 }
 
-/* toast */
+/* Toast */
 .toast {
     position: fixed;
     left: 50%;
@@ -1358,7 +1344,7 @@ main {
     border-color: rgba(255,92,125,0.24);
 }
 
-/* footer */
+/* Footer */
 footer {
     text-align: center;
     padding: 28px 20px 36px;
@@ -1370,7 +1356,7 @@ footer .brand {
     font-weight: 900;
 }
 
-/* responsive */
+/* Responsive */
 @media (max-width: 980px) {
     .landing-content,
     .app-info-section {
