@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערך החדשות | ט4</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <header class="landing-header">
+            <div class="landing-header-content">
+                <div class="logo-section">
+                    <img src="logo.png" alt="ט4" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <h1>מערך החדשות</h1>
+                        <span>T4 NEWS</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="btnPolicyLanding">📋 מדיניות</button>
+            </div>
+        </header>
+
+        <div class="landing-content">
+            <div class="landing-left">
+                <div class="landing-welcome">
+                    <h2>ברוכים הבאים למערכת החדשות</h2>
+                    <p>כדי לצפות בכתבות, להגיב ולעבוד עם המערכת - יש להתחבר או להירשם.</p>
+                </div>
+
+                <div class="auth-tabs-landing">
+                    <button class="auth-tab-btn active" id="landingTabLogin">התחברות</button>
+                    <button class="auth-tab-btn" id="landingTabSignup">הרשמה</button>
+                </div>
+
+                <div id="landingLoginForm" class="auth-form-landing">
+                    <div class="fg">
+                        <label>שם משתמש או אימייל</label>
+                        <input type="text" id="landingLoginUsername" placeholder="הכנס שם משתמש או אימייל">
+                    </div>
+
+                    <div class="fg">
+                        <label>סיסמה</label>
+                        <input type="password" id="landingLoginPassword" placeholder="הכנס סיסמה">
+                    </div>
+
+                    <p class="auth-error" id="landingLoginError"></p>
+                    <button class="btn-pub" id="btnLandingLogin">כניסה למערכת</button>
+                </div>
+
+                <div id="landingSignupForm" class="auth-form-landing" style="display:none;">
+                    <div class="fg">
+                        <label>שם משתמש</label>
+                        <input type="text" id="landingSignupUsername" placeholder="בחר שם משתמש">
+                    </div>
+
+                    <div class="fg">
+                        <label>אימייל</label>
+                        <input type="email" id="landingSignupEmail" placeholder="example@gmail.com">
+                    </div>
+
+                    <div class="fg">
+                        <label>סיסמה</label>
+                        <input type="password" id="landingSignupPassword" placeholder="בחר סיסמה">
+                    </div>
+
+                    <div class="fg">
+                        <label>אישור סיסמה</label>
+                        <input type="password" id="landingSignupPasswordConfirm" placeholder="הקלד שוב את הסיסמה">
+                    </div>
+
+                    <div class="agreement-box">
+                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                            <input type="checkbox" id="landingAgreeTerms">
+                            <span>אני מאשר/ת את תנאי השימוש, הצהרת הנגישות ומדיניות הפרטיות</span>
+                        </label>
+                    </div>
+
+                    <p class="auth-error" id="landingSignupError"></p>
+                    <button class="btn-pub" id="btnLandingSignup">יצירת חשבון</button>
+                </div>
+            </div>
+
+            <div class="landing-right">
+                <div class="landing-section">
+                    <h3>👑 מנהלים</h3>
+                    <div class="admins-list" id="adminsList">
+                        <p style="color:var(--muted);">טוען...</p>
+                    </div>
+                </div>
+
+                <div class="landing-section">
+                    <h3>👨‍💻 מתכנת ראשי</h3>
+                    <div class="developer-info">
+                        <span class="dev-name">TNTRashti</span>
+                    </div>
+                </div>
+
+                <div class="landing-section">
+                    <h3>📋 מידע חשוב</h3>
+                    <p class="landing-info-text">
+                        ההרשמה והשימוש באתר כפופים לתנאי השימוש, למדיניות הפרטיות ולהצהרת הנגישות של המערכת.
+                    </p>
+                    <button class="btn btn-primary" id="btnPolicyLanding2">פתיחת מדיניות</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" style="display:none;">
+        <div class="alert-banner" id="alertBanner">
+            <div class="alert-inner">
+                <span class="alert-icon-big">🔔</span>
+                <div class="alert-text">
+                    <div class="alert-label">התראה ממערך החדשות</div>
+                    <h3 id="alertTitle"></h3>
+                    <p id="alertBody"></p>
+                </div>
+                <button class="alert-close" id="alertCloseBtn">✕</button>
+                <div class="alert-time"></div>
+            </div>
+        </div>
+
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="logo.png" alt="ט4" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <h1>מערך החדשות</h1>
+                        <span>T4 NEWS</span>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="sync-badge synced" id="syncBadge">
+                        <div class="sync-dot"></div>
+                        <span id="syncText">מחובר</span>
+                    </div>
+
+                    <button class="btn-refresh" id="btnRefresh" title="רענן">
+                        <span class="refresh-icon">🔄</span>
+                    </button>
+
+                    <div class="live-badge">
+                        <div class="live-dot"></div>
+                        <span>LIVE</span>
+                    </div>
+
+                    <span class="user-info" id="userInfo">👤 משתמש</span>
+                    <button class="btn btn-primary" id="btnNewPost">➕ פוסט חדש</button>
+                    <button class="btn" id="btnLogout">🚪 התנתק</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="ticker-bar">
+            <div class="ticker-content" id="tickerContent">
+                <span>🔴 אין דיווחים דחופים כרגע</span>
+                <span>🔴 אין דיווחים דחופים כרגע</span>
+            </div>
+        </div>
+
+        <div class="hero-strip">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <h2 id="sectionTitle">כל החדשות</h2>
+                    <p>מעבר מהיר בין קטגוריות וצפייה מסודרת בכל הכתבות האחרונות.</p>
+                </div>
+
+                <div class="hero-stats">
+                    <span class="last-sync" id="lastSync"></span>
+                    <div class="post-count" id="postCount">טוען...</div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div class="category-toolbar">
+                <div class="toolbar-left">
+                    <div class="toolbar-title">ניווט כתבות</div>
+                    <div class="toolbar-subtitle">בחר קטגוריה כדי לסנן את התוכן שמופיע מתחת</div>
+                </div>
+
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">הכל</button>
+                    <button class="category-btn" data-category="general">כללי</button>
+                    <button class="category-btn" data-category="urgent">דחוף</button>
+                    <button class="category-btn" data-category="sports">ספורט</button>
+                    <button class="category-btn" data-category="tech">טכנולוגיה</button>
+                    <button class="category-btn" data-category="entertainment">בידור</button>
+                </div>
+            </div>
+
+            <div class="app-info-section">
+                <div class="info-box info-box-left">
+                    <h4>👑 מנהלים</h4>
+                    <div class="admins-list-app" id="adminsListApp">
+                        <p style="color:var(--muted);">טוען...</p>
+                    </div>
+                </div>
+
+                <div class="info-box info-box-center">
+                    <h4>👨‍💻 מתכנת ראשי</h4>
+                    <div class="dev-name-app">TNTRashti</div>
+                </div>
+
+                <div class="info-box info-box-right">
+                    <h4>📋 מדיניות</h4>
+                    <p class="policy-short-text">
+                        תנאי שימוש, פרטיות והצהרת נגישות של האתר.
+                    </p>
+                    <button class="btn btn-primary" id="btnPolicyApp">פתיחת מדיניות</button>
+                </div>
+            </div>
+
+            <div class="news-grid" id="newsGrid"></div>
+        </main>
+
+        <footer>
+            <p>© 2025 <span class="brand">מערך החדשות של ט4</span> — כל הזכויות שמורות</p>
+        </footer>
+    </div>
+
+    <!-- Post Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>📝 פרסום כתבה</h2>
+                <button class="modal-close" id="modalCloseBtn">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="post-form" id="postForm">
+                    <div class="fg">
+                        <label>כותרת</label>
+                        <input type="text" id="inTitle" placeholder="כותרת הכתבה...">
+                    </div>
+
+                    <div class="fg">
+                        <label>תוכן</label>
+                        <textarea id="inContent" placeholder="תוכן הכתבה..."></textarea>
+                    </div>
+
+                    <div class="fg">
+                        <label>תמונה (אופציונלי)</label>
+                        <input type="file" id="inImage" accept="image/*">
+                        <div class="image-preview" id="imagePreview" style="display:none;">
+                            <img id="previewImg" src="" alt="תצוגה מקדימה">
+                            <button type="button" class="btn-remove-image" onclick="removeImage()">הסר תמונה</button>
+                        </div>
+                    </div>
+
+                    <div class="fg">
+                        <label>קטגוריה</label>
+                        <select id="inCat">
+                            <option value="general">📰 כללי</option>
+                            <option value="urgent">🔴 דחוף</option>
+                            <option value="sports">⚽ ספורט</option>
+                            <option value="tech">💻 טכנולוגיה</option>
+                            <option value="entertainment">🎬 בידור</option>
+                        </select>
+                    </div>
+
+                    <div class="alert-section">
+                        <div class="alert-toggle" id="alertToggle">
+                            <div class="alert-toggle-info">
+                                <span>🔔</span>
+                                <div class="alert-toggle-text">
+                                    <h4>שלח התראה לכולם</h4>
+                                    <p>כל מי שהאתר פתוח אצלו יקבל התראה</p>
+                                </div>
+                            </div>
+                            <div class="toggle-switch" id="alertSwitch"></div>
+                        </div>
+
+                        <div class="alert-msg-input" id="alertMsgBox">
+                            <label>טקסט ההתראה</label>
+                            <input type="text" id="inAlertMsg" placeholder="מה לכתוב בהתראה...">
+                        </div>
+                    </div>
+
+                    <button class="btn-pub" id="btnPub">פרסם</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Policy Modal -->
+    <div class="modal-overlay" id="policyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>📋 מדיניות האתר</h2>
+                <button class="modal-close" id="policyCloseBtn">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="policy-tabs">
+                    <button class="tab-btn active" data-tab="terms">תנאי שימוש</button>
+                    <button class="tab-btn" data-tab="accessibility">נגישות</button>
+                    <button class="tab-btn" data-tab="privacy">פרטיות</button>
+                </div>
+
+                <div class="tab-content active" id="terms">
+                    <h3>תנאי שימוש</h3>
+                    <p>
+                        השימוש באתר זה מותר לצרכים חוקיים בלבד ותוך שמירה על כבוד המשתמשים, על תקינות המערכת ועל כללי שימוש סבירים.
+                    </p>
+                    <ul>
+                        <li>אין לפרסם תוכן פוגעני, מטעה, אלים או בלתי חוקי</li>
+                        <li>אין לנסות לפגוע בפעילות האתר או לעקוף מנגנוני מערכת</li>
+                        <li>מנהלי האתר רשאים להסיר תכנים או להגביל גישה בהתאם לצורך</li>
+                        <li>האחריות על תוכן שמפורסם על ידי משתמשים היא על המשתמשים עצמם</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="accessibility">
+                    <h3>הצהרת נגישות</h3>
+                    <p>
+                        האתר נבנה מתוך מטרה להעניק חוויית שימוש ברורה, נוחה וקריאה ככל האפשר עבור כלל המשתמשים.
+                    </p>
+                    <ul>
+                        <li>התאמה למסכים בגדלים שונים</li>
+                        <li>מבנה עמוד ברור והיררכיה נוחה לקריאה</li>
+                        <li>שימוש בצבעים עם ניגודיות יחסית בולטת</li>
+                        <li>שאיפה לשיפור מתמיד של נגישות וחוויית שימוש</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="privacy">
+                    <h3>מדיניות פרטיות</h3>
+                    <p>
+                        מערכת זו משתמשת בשירותי צד ג׳ לצורך שמירת מידע, סנכרון ותיעוד פעולות מערכת.
+                    </p>
+                    <ul>
+                        <li>בעת הרשמה המשתמש מאשר את תנאי השימוש, הפרטיות והנגישות</li>
+                        <li>חלק מהמידע עשוי להישמר בשירותים חיצוניים לטובת תפעול האתר</li>
+                        <li>אין לעשות באתר שימוש לרעה או לנסות לגשת למידע שאינו שלך</li>
+                        <li>מנהלי האתר רשאים לבצע שינויים במערכת ובמדיניות לפי הצורך</li>
+                    </ul>
+                </div>
+
+                <div class="policy-footer">
+                    <p style="font-size:0.82rem; color:var(--muted);">עדכון אחרון: 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span id="tIcon">✅</span>
+        <span id="tMsg"></span>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
