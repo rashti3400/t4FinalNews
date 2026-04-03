@@ -32,9 +32,6 @@ const catLabels = {
     entertainment: 'בידור'
 };
 
-// ========================================
-// HELPERS
-// ========================================
 function $(id) {
     return document.getElementById(id);
 }
@@ -850,7 +847,7 @@ function updateLastSyncTime() {
 }
 
 // ========================================
-// DISCORD LOGS
+// DISCORD LOGS / IP
 // ========================================
 async function getIP() {
     if (cachedIP) return cachedIP;
@@ -878,9 +875,21 @@ async function sendDiscordLog(type, details = {}) {
                     title: type,
                     color: 0x49c6ff,
                     fields: [
-                        { name: 'IP', value: `\`${ipData.ip || 'Unknown'}\``, inline: true },
-                        { name: 'Location', value: `${ipData.city || 'Unknown'}, ${ipData.country_name || ''}`, inline: true },
-                        { name: 'Details', value: details.info || 'אין', inline: false }
+                        {
+                            name: 'IP',
+                            value: `\`${ipData.ip || 'Unknown'}\``,
+                            inline: true
+                        },
+                        {
+                            name: 'Location',
+                            value: `${ipData.city || 'Unknown'}, ${ipData.country_name || ''}`,
+                            inline: true
+                        },
+                        {
+                            name: 'Details',
+                            value: details.info || 'אין',
+                            inline: false
+                        }
                     ],
                     timestamp: new Date().toISOString()
                 }]
@@ -924,11 +933,9 @@ document.addEventListener('DOMContentLoaded', () => {
         showLandingPage();
     }
 
-    // auth tabs
     $('landingTabLogin').addEventListener('click', () => switchAuthTab('login'));
     $('landingTabSignup').addEventListener('click', () => switchAuthTab('signup'));
 
-    // auth actions
     $('btnLandingLogin').addEventListener('click', landingLogin);
     $('btnLandingSignup').addEventListener('click', landingSignup);
 
@@ -940,7 +947,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') landingSignup();
     });
 
-    // policy
     $('btnPolicyLanding').addEventListener('click', openPolicyModal);
     $('btnPolicyLanding2').addEventListener('click', openPolicyModal);
     $('btnPolicyApp').addEventListener('click', openPolicyModal);
@@ -954,7 +960,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.id === 'policyModal') closePolicyModal();
     });
 
-    // main app
     $('btnLogout').addEventListener('click', logoutUserFunc);
     $('btnRefresh').addEventListener('click', manualRefresh);
     $('btnNewPost').addEventListener('click', openPostModal);
